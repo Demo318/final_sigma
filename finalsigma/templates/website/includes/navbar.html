@@ -1,0 +1,48 @@
+<!-- navbar style reference: https://bulma.io/documentation/components/navbar/ -->
+
+{% load static %}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://finalsigma.io">
+      <img src="{% static 'website/img/finalsigma.png' %}"  height="28">
+    </a>
+
+    <a rule="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarText">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarText" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">
+        Home
+      </a>
+      <a class="navbar-item" href="http://shufflesocial.xyz">
+        Shuffle Social
+      </a>
+    </div>
+
+    <div class=""navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          {% if user.is_authenticated %}
+          <a class="button" href="/logout/">
+            Log Out
+          </a>
+          {% else %}
+          <a class="button is-primary" href="/register/">
+            <strong>Sign Up</strong>
+          </a>
+          <a class="button is-light" href="/login/">
+            Log In
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</nav>

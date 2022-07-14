@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <!-- required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link to bulma css  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>Final Sigma</title>
+  </head>
+  <body>
+    {% include "website/includes/navbar.html" %}
+    {% include "website/includes/messages.html" %}
+    {% block body %}
+
+    {% endblock %}
+    <!-- javascript libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- custom javascript -->
+    <script src="{% static 'website/js/navbar.js' %}"></script>
+  </body>
+</html>

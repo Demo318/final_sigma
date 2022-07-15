@@ -87,11 +87,11 @@ DATABASES = {
         'default': config(
             'DATABASE_URL',
             default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
-            conn_max_age=600,
-            ssl_require=True,
             cast=db_url,
         )
     }
+
+DATABASES['default']['CONN_MAX_AGE'] = 500
 
 
 
@@ -128,6 +128,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATIC_URL = 'static/'
 

@@ -142,7 +142,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Crispy Forms for Bulma
+# Crispy Forms for Bulma CSS
 # https://github.com/ckrybus/crispy-bulma
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = ("bulma",)

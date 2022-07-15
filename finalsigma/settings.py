@@ -167,5 +167,5 @@ MESSAGE_TAGS = {
 
 BUGSNAG = {
     'api_key': config('BUGSNAG_API_KEY'),
-
+    'project_root': BASE_DIR,
 }

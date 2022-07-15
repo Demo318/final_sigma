@@ -87,9 +87,9 @@ DATABASES = {
         'default': config(
             'DATABASE_URL',
             default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
-            cast=db_url,
             conn_max_age=600,
-            ssl_require=True
+            ssl_require=True,
+            cast=db_url,
         )
     }
 

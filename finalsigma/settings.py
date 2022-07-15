@@ -91,7 +91,7 @@ DATABASES = {
         )
     }
 
-DATABASES['default']['CONN_MAX_AGE'] = 500
+# DATABASES['default']['CONN_MAX_AGE'] = 500
 
 
 

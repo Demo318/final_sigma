@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'bugsnag.django.middleware.BugsnagMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -159,4 +160,12 @@ MESSAGE_TAGS = {
     messages.SUCCESS: "notification is-success",
     messages.WARNING: "notification is-warning",
     messages.ERROR: "notification is-danger",
+}
+
+# Bugsnag for error reporting on Heroku.
+# Learn more at https://docs.bugsnag.com/platforms/python/django/
+
+BUGSNAG = {
+    'api_key': config('BUGSNAG_API_KEY'),
+
 }

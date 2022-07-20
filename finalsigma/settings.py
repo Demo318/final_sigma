@@ -160,11 +160,3 @@ MESSAGE_TAGS = {
     messages.WARNING: "notification is-warning",
     messages.ERROR: "notification is-danger",
 }
-
-# Bugsnag for error reporting on Heroku.
-# Learn more at https://docs.bugsnag.com/platforms/python/django/
-
-BUGSNAG = {
-    'api_key': config('BUGSNAG_API_KEY'),
-    'project_root': BASE_DIR,
-}

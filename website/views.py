@@ -7,9 +7,16 @@ from django.contrib import messages
 from website.models import Post
 
 def index(request):
-  posts = Post.objects.all()
   context = {}
-  context['posts'] = posts
+  try:
+    posts = Post.objects.all()
+    context['posts'] = posts
+  except Post.DoesNotExist:
+    posts = {
+      'title': 'No Posts Exist',
+      'body': 'There are no posts in the database.',
+      'slug': '#',
+      }
   for post in context['posts']:
     post.body = post.body[0:250] + "..."
   return render(request, 'website/index.html', context=context)

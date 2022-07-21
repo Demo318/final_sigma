@@ -19,7 +19,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link to bulma css  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <title>Final Sigma</title>
+    <title>Final Sigma | 
+      {% block title %}
+        Content and Community for Men Who Want to Make It
+      {% endblock %}
+    </title>
   </head>
   <body>
     {% include "website/includes/navbar.html" %}

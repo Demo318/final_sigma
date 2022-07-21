@@ -4,9 +4,15 @@ from .forms import NewUserForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from website.models import Post
 
 def index(request):
-  return render(request, 'website/index.html')
+  posts = Post.objects.all()
+  context = {}
+  context['posts'] = posts
+  for post in context['posts']:
+    post.body = post.body[0:250]
+  return render(request, 'website/index.html', context=context)
 
 # TODO: Add password-reset feature https://ordinarycoders.com/blog/article/django-password-reset
 def register_request(request):

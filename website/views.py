@@ -11,7 +11,7 @@ def index(request):
   context = {}
   context['posts'] = posts
   for post in context['posts']:
-    post.body = post.body[0:250]
+    post.body = post.body[0:250] + "..."
   return render(request, 'website/index.html', context=context)
 
 # TODO: Add password-reset feature https://ordinarycoders.com/blog/article/django-password-reset

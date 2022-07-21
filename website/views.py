@@ -8,15 +8,8 @@ from website.models import Post
 
 def index(request):
   context = {}
-  try:
-    posts = Post.objects.all()
-    context['posts'] = posts
-  except Post.DoesNotExist:
-    posts = {
-      'title': 'No Posts Exist',
-      'body': 'There are no posts in the database.',
-      'slug': '#',
-      }
+  posts = Post.objects.all()
+  context['posts'] = posts
   for post in context['posts']:
     post.body = post.body[0:250] + "..."
   return render(request, 'website/index.html', context=context)

@@ -3,15 +3,17 @@
 {% block body %}
   <section class="section">
     <div class="container">
-      <h1 class="title is-1">Hello World!</h1>
+      <h1 class="title is-1">Final Sigma</h1>
     </div>
   </section>
   <section class="section">
     <div class="container">
       {% for post in posts %}
-      <h2 class="title is-2">{{ post.title }}</h2>
+      <a href="{% url 'website:show_post' post.slug %}">
+        <h2 class="title is-2">{{ post.title }}</h2>
+      </a>
       <div class="content">
-        {{ post.body|safe }}
+        {{ post.body|safe }}(<a href="{% url 'website:show_post' post.slug %}">read more</a>)
       </div><br />
       {% endfor %}
     </div>

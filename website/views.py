@@ -14,6 +14,15 @@ def index(request):
     post.body = post.body[0:250] + "..."
   return render(request, 'website/index.html', context=context)
 
+def show_post(request, post_title_slug):
+  context = {}
+  try:
+    post = Post.objects.get(slug=post_title_slug)
+    context['post'] = post
+  except Post.DoesNotExist:
+    return redirect('/')
+  return render(request, 'website/post.html', context=context)
+
 # TODO: Add password-reset feature https://ordinarycoders.com/blog/article/django-password-reset
 def register_request(request):
   if request.method == "POST":

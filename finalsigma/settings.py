@@ -30,7 +30,7 @@ SECRET_KEY = config('DJ_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DJ_DEBUG', cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS').split('/')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(' ')
 
 
 # Application definition

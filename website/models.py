@@ -1,15 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from datetime import datetime
 from tinymce import models as tinymce_models
 
 class Post(models.Model):
   title = models.CharField(max_length=100, unique=True)
   body = tinymce_models.HTMLField()
   slug = models.SlugField(unique=True, blank=True)
+  date_created = models.DateTimeField()
+  date_modified = models.DateTimeField()
 
   def save(self, *args, **kwargs):
     self.slug=slugify(self.title)
+    if self.date_created == None:
+      self.date_created = datetime.now()
+    self.date_modified = datetime.now()
     super(Post, self).save(*args,**kwargs)
 
   def __str__(self):

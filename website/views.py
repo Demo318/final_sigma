@@ -8,11 +8,12 @@ from website.models import Post
 
 def index(request):
   context = {}
-  posts = Post.objects.all()
+  posts = Post.objects.all().order_by('-date_created')
   context['posts'] = posts
   for post in context['posts']:
     post.body = post.body[0:250] + "..."
   return render(request, 'website/index.html', context=context)
+
 
 def show_post(request, post_title_slug):
   context = {}
@@ -22,6 +23,7 @@ def show_post(request, post_title_slug):
   except Post.DoesNotExist:
     return redirect('/')
   return render(request, 'website/post.html', context=context)
+
 
 # TODO: Add password-reset feature https://ordinarycoders.com/blog/article/django-password-reset
 def register_request(request):
@@ -35,6 +37,7 @@ def register_request(request):
     messages.error(request, "Unsuccessful registration. Invalid information.")
   form = NewUserForm()
   return render(request=request, template_name="website/register.html", context={ "register_form":form })
+
 
 def login_request(request):
   if request.method == "POST":
@@ -53,6 +56,7 @@ def login_request(request):
       messages.error(request, "Invalid username or password.")
   form = AuthenticationForm()
   return render(request=request, template_name="website/login.html", context={"login_form":form})
+
 
 def logout_request(request):
   logout(request)

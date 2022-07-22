@@ -14,7 +14,7 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 from decouple import config
 from dj_database_url import parse as db_url
-from google.oath2 import service_account
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -137,7 +137,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+if config('CODE_ENVIRONMENT') == 'production':
+    STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -163,7 +164,7 @@ MESSAGE_TAGS = {
 
 # Settings for Google Cloud Storage services.
 
-GS_CREDENTIALS = service_account.credentials.from_service_account_file(
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     BASE_DIR / 'final-sigma-website-bucket-credentials.json'
 )
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'

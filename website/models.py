@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from datetime import datetime
+from storages.backends.gcloud import GoogleCloudStorage
 from tinymce import models as tinymce_models
+
+storage = GoogleCloudStorage()
 
 class Post(models.Model):
   title = models.CharField(max_length=100, unique=True)

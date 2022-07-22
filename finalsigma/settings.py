@@ -14,6 +14,7 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 from decouple import config
 from dj_database_url import parse as db_url
+from google.oath2 import service_account
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,7 +137,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -160,3 +160,11 @@ MESSAGE_TAGS = {
     messages.WARNING: "notification is-warning",
     messages.ERROR: "notification is-danger",
 }
+
+# Settings for Google Cloud Storage services.
+
+GS_CREDENTIALS = service_account.credentials.from_service_account_file(
+    BASE_DIR / 'final-sigma-website-bucket-credentials.json'
+)
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = config('GOOGLE_BUCKET_NAME')

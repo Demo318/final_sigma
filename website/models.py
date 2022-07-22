@@ -13,6 +13,7 @@ class Post(models.Model):
   slug = models.SlugField(unique=True, blank=True)
   date_created = models.DateTimeField()
   date_modified = models.DateTimeField()
+  header_img = models.ImageField(upload_to='header_imgs')
 
   def save(self, *args, **kwargs):
     self.slug=slugify(self.title)

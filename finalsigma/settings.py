@@ -146,7 +146,6 @@ STATICFILES_DIRS = [
 
 if config('CODE_ENVIRONMENT') == 'production':
     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    STATIC_URL = "https://storage.googleapis.com/" + config('GOOGLE_BUCKET_NAME') + '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -186,8 +185,3 @@ if config('CODE_ENVIRONMENT') == 'production':
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = config('GOOGLE_BUCKET_NAME')
 
-# TinyMCE Editor Config
-
-# TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
-
-# TINYMCE_JS_ROOT = STATIC_ROOT / 'tinymce/'

@@ -2,6 +2,7 @@ fsenv
 *.env
 *.DS_Store
 final-sigma-website-bucket-credentials.json
+final-sigma-website-bucket-credentials_old.json
 staticfiles/
 
 # Taken from https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/ #

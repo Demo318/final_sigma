@@ -173,6 +173,7 @@ MESSAGE_TAGS = {
 # GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
 #     BASE_DIR / 'final-sigma-website-bucket-credentials.json'
 # )
+
 if config('CODE_ENVIRONMENT') == 'production':
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = config('GOOGLE_BUCKET_NAME')

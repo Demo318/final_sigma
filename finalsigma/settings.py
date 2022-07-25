@@ -183,5 +183,5 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
 
 if config('CODE_ENVIRONMENT') == 'production':
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    CKEDITOR_BASEPATH = DEFAULT_AUTO_FIELD + 'ckeditor/ckeditor'
+    CKEDITOR_BASEPATH = DEFAULT_FILE_STORAGE + 'ckeditor/ckeditor'
 GS_BUCKET_NAME = config('GOOGLE_BUCKET_NAME')

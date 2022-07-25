@@ -184,3 +184,9 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
 if config('CODE_ENVIRONMENT') == 'production':
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = config('GOOGLE_BUCKET_NAME')
+
+# TinyMCE Editor Config
+
+TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
+
+TINYMCE_JS_ROOT = STATIC_ROOT / 'tinymce/'

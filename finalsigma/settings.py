@@ -189,5 +189,5 @@ GS_BUCKET_NAME = config('GOOGLE_BUCKET_NAME')
 if config('CODE_ENVIRONMENT') == 'production':
     from django.contrib.staticfiles.storage import staticfiles_storage
 
-    TINYMCE_JS_URL = staticfiles_storage.url('tiny_mce/tiny_mce.min.js')
-    TINYMCE_JS_ROOT = staticfiles_storage.url('tiny_mce')
+    TINYMCE_JS_URL = staticfiles_storage.url('tinymce/tinymce.min.js')
+    TINYMCE_JS_ROOT = staticfiles_storage.url('tinymce')

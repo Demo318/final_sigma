@@ -172,7 +172,10 @@ MESSAGE_TAGS = {
 # Settings for Google Cloud Storage services.
 
 with open(BASE_DIR / 'final-sigma-website-bucket-credentials.json', "w") as f:
-    json.dump(config('GOOGLE_APPLICATION_CREDENTIALS'), f)
+    json.dump(
+        json.loads(config('GOOGLE_APPLICATION_CREDENTIALS')),
+        f
+    )
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     BASE_DIR / 'final-sigma-website-bucket-credentials.json'

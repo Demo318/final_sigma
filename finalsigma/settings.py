@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bulma',
-    'tinymce',
+    'ckeditor',
     'website',
 ]
 
@@ -184,10 +184,3 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
 if config('CODE_ENVIRONMENT') == 'production':
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = config('GOOGLE_BUCKET_NAME')
-
-#Tiny MCE fix
-if config('CODE_ENVIRONMENT') == 'production':
-    from django.contrib.staticfiles.storage import staticfiles_storage
-
-    TINYMCE_JS_URL = staticfiles_storage.url('tinymce/tinymce.min.js')
-    TINYMCE_JS_ROOT = staticfiles_storage.url('tinymce/')

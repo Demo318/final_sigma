@@ -3,13 +3,13 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from datetime import datetime
 from storages.backends.gcloud import GoogleCloudStorage
-from tinymce import models as tinymce_models
+from ckeditor.fields import RichTextField
 
 storage = GoogleCloudStorage()
 
 class Post(models.Model):
   title = models.CharField(max_length=100, unique=True)
-  body = tinymce_models.HTMLField()
+  body = RichTextField()
   slug = models.SlugField(unique=True, blank=True)
   date_created = models.DateTimeField()
   date_modified = models.DateTimeField()
@@ -28,7 +28,7 @@ class Post(models.Model):
 
 class Page(models.Model):
   title = models.CharField(max_length=12, unique=True)
-  body = tinymce_models.HTMLField()
+  body = RichTextField()
   external_url = models.URLField()
 
 

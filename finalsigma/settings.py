@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bulma',
     'ckeditor',
-    'markdownx',
     'martor',
     'website',
 ]

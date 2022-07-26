@@ -4,12 +4,16 @@ from django.template.defaultfilters import slugify
 from datetime import datetime
 from storages.backends.gcloud import GoogleCloudStorage
 from ckeditor.fields import RichTextField
+from markdownx.models import MarkdownxField
+from martor.models import MartorField
 
 storage = GoogleCloudStorage()
 
 class Post(models.Model):
   title = models.CharField(max_length=100, unique=True)
   body = RichTextField()
+  body_two = MarkdownxField()
+  body_three = MartorField()
   slug = models.SlugField(unique=True, blank=True)
   date_created = models.DateTimeField()
   date_modified = models.DateTimeField()

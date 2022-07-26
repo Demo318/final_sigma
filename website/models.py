@@ -10,8 +10,7 @@ storage = GoogleCloudStorage()
 
 class Post(models.Model):
   title = models.CharField(max_length=100, unique=True)
-  body = RichTextField()
-  body_three = MartorField()
+  body = MartorField()
   slug = models.SlugField(unique=True, blank=True)
   date_created = models.DateTimeField()
   date_modified = models.DateTimeField()

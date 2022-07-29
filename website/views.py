@@ -11,7 +11,7 @@ def index(request):
   posts = Post.objects.all().order_by('-date_created')
   context['posts'] = posts
   for post in context['posts']:
-    post.body = post.body[0:250] + "..."
+    post.body = post.body[0:300] + "..."
   return render(request, 'website/index.html', context=context)
 
 
